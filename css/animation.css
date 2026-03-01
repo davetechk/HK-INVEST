@@ -1,0 +1,139 @@
+/* css/animations.css */
+/* ============================
+   MODAL / TOAST ANIMATIONS ONLY
+   ============================ */
+
+/* Modal open/close */
+.hk-modal-root.is-open .hk-modal{
+  animation: hkModalIn 240ms cubic-bezier(.2,.8,.2,1) both;
+}
+.hk-modal-root.is-closing .hk-modal{
+  animation: hkModalOut 180ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.hk-modal-root.is-open .hk-modal-overlay{
+  animation: hkFadeIn 220ms ease-out both;
+}
+.hk-modal-root.is-closing .hk-modal-overlay{
+  animation: hkFadeOut 160ms ease-out both;
+}
+
+@keyframes hkModalIn{
+  from{ opacity: 0; transform: translate(-50%, -50%) translateY(8px) scale(.985); }
+  to{ opacity: 1; transform: translate(-50%, -50%) translateY(0) scale(1); }
+}
+@keyframes hkModalOut{
+  from{ opacity: 1; transform: translate(-50%, -50%) translateY(0) scale(1); }
+  to{ opacity: 0; transform: translate(-50%, -50%) translateY(8px) scale(.985); }
+}
+
+@keyframes hkFadeIn{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+@keyframes hkFadeOut{
+  from{ opacity: 1; }
+  to{ opacity: 0; }
+}
+
+/* Toast stack */
+.hk-toast{
+  animation: hkToastIn 240ms cubic-bezier(.2,.8,.2,1) both;
+}
+.hk-toast.is-leaving{
+  animation: hkToastOut 200ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes hkToastIn{
+  from{ opacity: 0; transform: translateY(-8px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hkToastOut{
+  from{ opacity: 1; transform: translateY(0); }
+  to{ opacity: 0; transform: translateY(-8px); }
+}
+
+/* Loading overlay */
+.hk-loading.is-open{
+  animation: hkFadeIn 220ms ease-out both;
+}
+.hk-loading.is-closing{
+  animation: hkFadeOut 180ms ease-out both;
+}
+
+.hk-loading.is-open .hk-loading__barfill{
+  animation: hkLoadingBar 900ms ease-in-out infinite;
+}
+
+@keyframes hkLoadingBar{
+  0%{ transform: translateX(-40%); }
+  50%{ transform: translateX(120%); }
+  100%{ transform: translateX(-40%); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hk-modal-root.is-open .hk-modal,
+  .hk-modal-root.is-closing .hk-modal,
+  .hk-modal-root.is-open .hk-modal-overlay,
+  .hk-modal-root.is-closing .hk-modal-overlay,
+  .hk-toast,
+  .hk-toast.is-leaving,
+  .hk-loading.is-open,
+  .hk-loading.is-closing,
+  .hk-loading.is-open .hk-loading__barfill{
+    animation: none !important;
+  }
+}
+
+
+
+/* css/animations.css */
+/* ============================
+   SKELETON + SPINNER ANIMATIONS ONLY
+   ============================ */
+
+.hk-shimmer::after{
+  animation: hkShimmer 1.25s ease-in-out infinite;
+}
+
+@keyframes hkShimmer{
+  0%{ transform: translateX(-70%); }
+  100%{ transform: translateX(140%); }
+}
+
+.hk-spinner{
+  animation: hkSpin .9s linear infinite;
+}
+
+@keyframes hkSpin{
+  to{ transform: rotate(360deg); }
+}
+
+/* Full page loader fade */
+.hk-loader-overlay.is-open{
+  animation: hkLoaderFadeIn 220ms ease-out both;
+}
+.hk-loader-overlay.is-closing{
+  animation: hkLoaderFadeOut 180ms ease-out both;
+}
+
+@keyframes hkLoaderFadeIn{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+@keyframes hkLoaderFadeOut{
+  from{ opacity: 1; }
+  to{ opacity: 0; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hk-shimmer::after,
+  .hk-spinner,
+  .hk-loader-overlay.is-open,
+  .hk-loader-overlay.is-closing{
+    animation: none !important;
+  }
+}

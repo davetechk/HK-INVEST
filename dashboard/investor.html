@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK INVEST - Investor Dashboard</title>
+    
+    <!-- Meta tags for SEO and accessibility -->
+    <meta name="description" content="HK INVEST Investor Dashboard - Agricultural Investment Platform">
+    <meta name="theme-color" content="#1B3B4F">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link rel="stylesheet" href="../css/pages/dashboard.css">
+    <link rel="stylesheet" href="../css/mobile.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <i class="fas fa-seedling"></i>
+                    </span>
+                    <span class="logo-text">HK INVEST</span>
+                </div>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <div class="nav-section">
+                    <ul class="nav-items">
+                        <li class="nav-item active" data-route="overview">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Overview</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="investments">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span>My Investments</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="investment-details">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-tree"></i>
+                                <span>Investment Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="updates">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Updates</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="transactions">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Transactions</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="documents">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Documents</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="notifications">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-bell"></i>
+                                <span>Notifications</span>
+                                <span class="badge" id="notificationBadge">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="support">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-headset"></i>
+                                <span>Support</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" data-route="profile">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-user"></i>
+                                <span>Profile & Security</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section logout-section">
+                    <ul class="nav-items">
+                        <li class="nav-item" id="logoutBtn">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-badge">
+                    <div class="user-avatar" id="userAvatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-name" id="sidebarUserName">Loading...</div>
+                        <div class="user-role">
+                            <span class="role-badge" id="userRoleBadge">Investor</span>
+                            <span class="status-badge status-approved" id="userStatusBadge">Approved</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title" id="pageTitle">Overview</h1>
+                </div>
+                
+                <div class="topbar-right">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="search" class="search-input" placeholder="Search investments..." id="globalSearch">
+                    </div>
+                    
+                    <button class="notification-icon" id="notificationBell" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    
+                    <div class="profile-menu" id="profileMenu">
+                        <button class="profile-trigger" aria-expanded="false" aria-haspopup="true">
+                            <div class="profile-avatar" id="profileAvatar">
+                                <span id="profileInitials">JD</span>
+                            </div>
+                            <span class="profile-name" id="profileName">Loading...</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <ul>
+                                <li><a href="#" data-route="profile"><i class="fas fa-user"></i> Profile</a></li>
+                                <li><a href="#" data-route="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                                <li><hr></li>
+                                <li><a href="#" id="dropdownLogout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="content-wrapper" id="contentWrapper">
+                <!-- Dynamic content will be loaded here -->
+                <div class="content-loading" id="contentLoading">
+                    <div class="loading-spinner"></div>
+                </div>
+                
+                <div class="content-area" id="contentArea">
+                    <!-- Initial content will be loaded via JS -->
+                </div>
+                
+                <!-- Global Error Boundary -->
+                <div class="error-boundary" id="errorBoundary" role="alert" aria-live="polite" hidden>
+                    <div class="error-content">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span id="errorMessage">An error occurred</span>
+                        <button class="error-dismiss" id="errorDismiss" aria-label="Dismiss error">×</button>
+                    </div>
+                </div>
+                
+                <!-- Toast Container -->
+                <div class="toast-container" id="toastContainer"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../js/app.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

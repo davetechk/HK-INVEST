@@ -1,0 +1,127 @@
+<!-- auth/register.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HK INVEST — Create Account</title>
+
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="/css/pages/auth.css" />
+</head>
+
+<body data-page="register">
+  <main id="authRegister" class="hk-auth">
+    <div class="hk-auth__frame">
+      <div class="hk-auth__brand" aria-label="HK Invest">
+        <div class="hk-auth__logo" aria-hidden="true"></div>
+        <div class="hk-auth__brandText">HK INVEST</div>
+      </div>
+
+      <section class="hk-authCard hk-reveal" data-reveal aria-label="Create account">
+        <header class="hk-authCard__head">
+          <h1 class="hk-authCard__title">Create Account</h1>
+          <p class="hk-authCard__sub">
+            Connect to structured agricultural production and<br />
+            verified opportunities.
+          </p>
+        </header>
+
+        <div id="registerError" class="hk-authError" role="alert" aria-live="polite" hidden></div>
+
+        <form id="registerForm" data-component="register-form" class="hk-form" novalidate>
+          <label class="hk-field">
+            <span class="hk-field__label">Full Name</span>
+            <input
+              class="hk-input"
+              type="text"
+              name="full_name"
+              autocomplete="name"
+              placeholder="E.g. John Doe"
+              required
+            />
+          </label>
+
+          <label class="hk-field">
+            <span class="hk-field__label">Email Address</span>
+            <input
+              class="hk-input"
+              type="email"
+              name="email"
+              autocomplete="email"
+              placeholder="yourname@example.com"
+              required
+              inputmode="email"
+            />
+          </label>
+
+          <div class="hk-field">
+            <div class="hk-field__labelRow">
+              <span class="hk-field__label">Password</span>
+            </div>
+
+            <div class="hk-inputWrap">
+              <input
+                class="hk-input hk-input--withIcon"
+                type="password"
+                name="password"
+                autocomplete="new-password"
+                required
+                minlength="8"
+                aria-describedby="pwHelp"
+                placeholder="••••••••••"
+              />
+              <button class="hk-iconBtn" type="button" data-action="toggle-password" aria-label="Show password">
+                <span class="hk-eye" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div id="pwHelp" class="hk-help">
+              At least 8 characters, one number, one special character.
+            </div>
+          </div>
+
+          <label class="hk-field">
+            <span class="hk-field__labelRow">
+              <span class="hk-field__label">Role</span>
+              <span class="hk-info" aria-hidden="true"></span>
+            </span>
+
+            <div class="hk-selectWrap">
+              <select class="hk-select" name="role" required>
+                <option value="investor" selected>Investor</option>
+                <option value="farmer">Farmer</option>
+                <option value="agent">Agent</option>
+              </select>
+            </div>
+          </label>
+
+          <button class="hk-btn hk-btn--primary" type="submit" data-action="register">
+            <span class="hk-btn__label">Create Account</span>
+            <span class="hk-btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="hk-footLine">
+            Already have an account? <a class="hk-link" href="/auth/login.html">Sign in</a>
+          </div>
+
+          <p class="hk-legal">
+            By creating an account, you agree to our
+            <a class="hk-link hk-link--muted" href="/terms-privacy.html">Terms of Use</a><br />
+            and <a class="hk-link hk-link--muted" href="/terms-privacy.html">Privacy Policy</a>.
+          </p>
+        </form>
+      </section>
+
+      <div class="hk-auth__note">
+        Structured onboarding. Verified project access available post-launch.
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/add.js"></script>
+</body>
+</html>

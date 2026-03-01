@@ -1,0 +1,78 @@
+/* css/theme.css */
+/* =========================================================
+   HK INVEST — Theme Variables (System-Compatible)
+   Goal: make ALL existing components render correctly.
+   NOTE: Variables here are intentionally aligned to what
+         base.css + existing component CSS already reference.
+   ========================================================= */
+
+:root{
+  /* =====================================================
+     PAGE / BASE (used by base.css)
+     ===================================================== */
+  --bg: #0b0f13;
+
+  /* base.css uses --text / --text-muted */
+  --text: rgba(255,255,255,.92);
+  --text-muted: rgba(255,255,255,.62);
+
+  /* base.css uses --border-subtle + --focus-ring */
+  --border-subtle: rgba(255,255,255,.10);
+  --focus-ring: rgba(22,180,120,.85);
+
+  /* =====================================================
+     BRAND (used by navbar/footer/buttons/toasts)
+     ===================================================== */
+  --brand-accent: #16b478;
+  --brand-mark: #16b478;
+  --on-accent: #07140f;
+
+  /* =====================================================
+     TEXT (used by navbar/footer/etc.)
+     ===================================================== */
+  --text-primary: rgba(255,255,255,.92);
+  --text-secondary: rgba(255,255,255,.78);
+
+  /* =====================================================
+     GLASS / SURFACE (used by navbar/footer/mobile nav/etc.)
+     ===================================================== */
+  --glass-bg: rgba(255,255,255,.06);
+  --glass-bg-strong: rgba(255,255,255,.08);
+  --glass-hover: rgba(255,255,255,.10);
+
+  --glass-border: rgba(255,255,255,.14);
+
+  /* =====================================================
+     SHADOWS / DEPTH (used by navbar/footer/modals/toasts)
+     ===================================================== */
+  --glass-shadow: 0 20px 50px rgba(0,0,0,.30);
+  --glass-shadow-pop: 0 26px 70px rgba(0,0,0,.42);
+  --accent-shadow: 0 10px 18px rgba(22, 180, 120, .22);
+  --avatar-shadow: 0 10px 26px rgba(0,0,0,.22);
+
+  /* =====================================================
+     BLUR / OVERLAYS
+     ===================================================== */
+  --glass-blur: 14px;
+  --drawer-backdrop: rgba(0,0,0,.55);
+
+  /* =====================================================
+     MISC (used by profile avatar)
+     ===================================================== */
+  --avatar-bg: rgba(255,255,255,.10);
+
+  /* =====================================================
+     STATES (used by toasts/alerts)
+     ===================================================== */
+  --success: #16b478;
+  --success-soft: rgba(22,180,120,.16);
+
+  --error: #d24a3d;
+  --error-soft: rgba(210,74,61,.16);
+
+  --warning: #caa24a;
+  --warning-soft: rgba(202,162,74,.18);
+
+  --info: #2e82d8;
+  --info-soft: rgba(46,130,216,.16);
+}

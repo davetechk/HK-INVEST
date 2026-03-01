@@ -1,0 +1,91 @@
+<!-- auth/login.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HK INVEST — Sign In</title>
+
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
+  <link rel="stylesheet" href="/css/animations.css" />
+  <link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="/css/pages/auth.css" />
+</head>
+
+<body data-page="login">
+  <main id="authLogin" class="hk-auth">
+    <div class="hk-auth__frame hk-auth__frame--login">
+      <div class="hk-auth__brand" aria-label="HK Invest">
+        <div class="hk-auth__logo" aria-hidden="true"></div>
+        <div class="hk-auth__brandText">HK INVEST</div>
+      </div>
+
+      <div class="hk-authTopLine">Sign in to your account</div>
+
+      <section class="hk-authCard hk-authCard--login hk-reveal" data-reveal aria-label="Sign in">
+        <header class="hk-authCard__head">
+          <h1 class="hk-authCard__title hk-authCard__title--login">Sign In</h1>
+          <p class="hk-authCard__sub hk-authCard__sub--login">Access your investor dashboard.</p>
+        </header>
+
+        <div id="loginError" class="hk-authError" role="alert" aria-live="polite" hidden></div>
+
+        <form id="loginForm" data-component="login-form" class="hk-form" novalidate>
+          <label class="hk-field">
+            <span class="hk-field__label">Email Address</span>
+            <input
+              class="hk-input"
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              placeholder="investor@example.com"
+              required
+              inputmode="email"
+            />
+          </label>
+
+          <div class="hk-field">
+            <span class="hk-field__label">Password</span>
+
+            <div class="hk-inputWrap">
+              <input
+                class="hk-input hk-input--withIcon"
+                type="password"
+                name="password"
+                id="password"
+                autocomplete="current-password"
+                required
+                placeholder="••••••••"
+              />
+              <button class="hk-iconBtn" type="button" data-action="toggle-password" aria-label="Show password">
+                <span class="hk-eye" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+          <button class="hk-btn hk-btn--primary" id="loginSubmit" type="submit" data-action="login">
+            <span class="hk-btn__label">Sign In</span>
+            <span class="hk-btn__spinner" aria-hidden="true"></span>
+          </button>
+
+          <div class="hk-footLine hk-footLine--login">
+            Don't have an account? <a class="hk-link" href="/auth/register.html">Create one</a>
+          </div>
+
+          <div class="hk-forgotLine">
+            <a class="hk-link hk-link--muted" href="/auth/reset-password.html">Forgot password?</a>
+          </div>
+        </form>
+      </section>
+
+      <div class="hk-auth__note hk-auth__note--login">
+        Secure authentication powered by structured access control.
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/add.js"></script>
+</body>
+</html>

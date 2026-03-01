@@ -1,0 +1,1115 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HK INVEST — Structured Agricultural Investment Platform</title>
+  <link rel="stylesheet" href="./css/pages/home.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <div class="shell">
+    <!-- Category 1: Header (Banner + Navbar) -->
+    <header class="site-header" role="banner">
+      <div class="announce" role="status" aria-live="polite">
+        <p class="announce__text">HK INVEST — Structured Agricultural Investment Platform. Launching Soon.</p>
+      </div>
+
+      <div class="navwrap">
+        <nav class="nav" aria-label="Primary">
+          <!-- Left: Logo -->
+          <a class="brand" href="./index.html" aria-label="HK INVEST Home">
+            <span class="brand__mark" aria-hidden="true">
+              <!-- Minimal agri-fintech mark -->
+              <svg viewBox="0 0 48 48" class="brand__svg" role="img" aria-hidden="true">
+                <path d="M24 5c7 6 12 12 12 20 0 7.7-5.4 13-12 13S12 32.7 12 25c0-8 5-14 12-20Z" fill="none" stroke="currentColor" stroke-width="2.5" />
+                <path d="M24 14c-1.2 2.6-2 5.2-2 8 0 4.8 3.1 8.7 2 8.7s-2-3.9-2-8.7c0-2.8.8-5.4 2-8Z" fill="currentColor" opacity=".35"/>
+                <path d="M17.5 27.5c3.2-1.4 6.5-1.4 9.7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 33h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+              </svg>
+            </span>
+            <span class="brand__word">HK INVEST</span>
+          </a>
+
+          <!-- Center: Links -->
+          <div class="nav__center" id="nav-desktop">
+            <a class="navlink is-active" href="./index.html">Home</a>
+
+            <div class="dd" data-dd="invest">
+              <button class="navlink navlink--btn" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="menu-invest">
+                Invest
+                <span class="chev" aria-hidden="true"></span>
+              </button>
+              <div class="menu" id="menu-invest" role="menu" aria-label="Invest">
+                <a role="menuitem" class="menu__item" href="/farms/farms.html">Explore Farms</a>
+                <a role="menuitem" class="menu__item" href="/#how-it-works">How It Works</a>
+                <a role="menuitem" class="menu__item" href="/dashboard/investor.html">Investor Dashboard</a>
+              </div>
+            </div>
+
+            <a class="navlink" href="/farms/farms.html">Farms</a>
+            <a class="navlink" href="/market/market.html">Market</a>
+
+            <div class="dd" data-dd="services">
+              <button class="navlink navlink--btn" type="button"
+                aria-haspopup="menu" aria-expanded="false" aria-controls="menu-services">
+                Services
+                <span class="chev" aria-hidden="true"></span>
+              </button>
+              <div class="menu" id="menu-services" role="menu" aria-label="Services">
+                <a role="menuitem" class="menu__item" href="/services/tools.html">Tools</a>
+                <a role="menuitem" class="menu__item" href="/services/workers.html">Workers</a>
+                <a role="menuitem" class="menu__item" href="/services/logistics.html">Logistics</a>
+                <a role="menuitem" class="menu__item" href="/services/storage.html">Storage</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Public / Logged -->
+          <div class="nav__right">
+            <!-- PUBLIC -->
+            <div class="auth auth--public" data-auth="public">
+              <a class="btn btn--ghost" href="/auth/login.html">Login</a>
+              <a class="btn btn--primary" href="/auth/register.html">Get Started</a>
+            </div>
+
+            <!-- LOGGED IN -->
+            <div class="auth auth--logged" data-auth="logged" hidden>
+              <a class="iconbtn" href="/notifications/notifications.html" aria-label="Notifications">
+                <span class="iconbtn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                    <path d="M12 22a2.2 2.2 0 0 0 2.2-2.2H9.8A2.2 2.2 0 0 0 12 22Z" fill="currentColor"/>
+                    <path d="M20 17.2c-1.3-1.4-2-2.7-2-6.2 0-3.8-2.3-6.2-5.6-6.9V3.2a.4.4 0 0 0-.4-.4h-2a.4.4 0 0 0-.4.4V4c-3.2.7-5.6 3.1-5.6 7 0 3.5-.7 4.8-2 6.2-.3.3-.4.7-.2 1.1.2.4.6.7 1 .7h16.4c.4 0 .8-.2 1-.7.2-.4.1-.8-.2-1.1Z"
+                      fill="currentColor" opacity=".9"/>
+                  </svg>
+                </span>
+                <span class="badge" aria-label="3 new notifications">3</span>
+              </a>
+
+              <div class="dd dd--profile" data-dd="profile">
+                <button class="avatar" type="button"
+                  aria-haspopup="menu" aria-expanded="false" aria-controls="menu-profile">
+                  <span class="avatar__ring" aria-hidden="true"></span>
+                  <span class="sr-only">Open profile menu</span>
+                </button>
+                <div class="menu menu--right" id="menu-profile" role="menu" aria-label="Profile">
+                  <a role="menuitem" class="menu__item" href="/dashboard/investor.html">Dashboard</a>
+                  <a role="menuitem" class="menu__item" href="/account/profile.html">Profile</a>
+                  <a role="menuitem" class="menu__item" href="/account/settings.html">Settings</a>
+                  <button role="menuitem" class="menu__item menu__item--danger" type="button" data-action="logout">Logout</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Hamburger -->
+            <button class="hamburger" type="button" aria-label="Open menu" aria-controls="mobile-panel" aria-expanded="false">
+              <span class="hamburger__bar" aria-hidden="true"></span>
+              <span class="hamburger__bar" aria-hidden="true"></span>
+              <span class="hamburger__bar" aria-hidden="true"></span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Panel -->
+        <div class="mobile" id="mobile-panel" aria-hidden="true">
+          <div class="mobile__panel" role="dialog" aria-modal="true" aria-label="Mobile menu">
+            <div class="mobile__top">
+              <a class="brand brand--mobile" href="./index.html" aria-label="HK INVEST Home">
+                <span class="brand__mark" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" class="brand__svg" role="img" aria-hidden="true">
+                    <path d="M24 5c7 6 12 12 12 20 0 7.7-5.4 13-12 13S12 32.7 12 25c0-8 5-14 12-20Z" fill="none" stroke="currentColor" stroke-width="2.5" />
+                    <path d="M24 14c-1.2 2.6-2 5.2-2 8 0 4.8 3.1 8.7 2 8.7s-2-3.9-2-8.7c0-2.8.8-5.4 2-8Z" fill="currentColor" opacity=".35"/>
+                    <path d="M17.5 27.5c3.2-1.4 6.5-1.4 9.7 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M16 33h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".75"/>
+                  </svg>
+                </span>
+                <span class="brand__word">HK INVEST</span>
+              </a>
+
+              <button class="mobile__close" type="button" aria-label="Close menu">
+                <span aria-hidden="true">✕</span>
+              </button>
+            </div>
+
+            <div class="mobile__links" aria-label="Mobile navigation">
+              <a class="m-link is-active" href="./index.html">Home</a>
+
+              <button class="m-acc" type="button" aria-expanded="false" aria-controls="m-invest">
+                <span>Invest</span><span class="m-acc__chev" aria-hidden="true"></span>
+              </button>
+              <div class="m-panel" id="m-invest">
+                <a class="m-sub" href="/farms/farms.html">Explore Farms</a>
+                <a class="m-sub" href="/#how-it-works">How It Works</a>
+                <a class="m-sub" href="/dashboard/investor.html">Investor Dashboard</a>
+              </div>
+
+              <a class="m-link" href="/farms/farms.html">Farms</a>
+              <a class="m-link" href="/market/market.html">Market</a>
+
+              <button class="m-acc" type="button" aria-expanded="false" aria-controls="m-services">
+                <span>Services</span><span class="m-acc__chev" aria-hidden="true"></span>
+              </button>
+              <div class="m-panel" id="m-services">
+                <a class="m-sub" href="/services/tools.html">Tools</a>
+                <a class="m-sub" href="/services/workers.html">Workers</a>
+                <a class="m-sub" href="/services/logistics.html">Logistics</a>
+                <a class="m-sub" href="/services/storage.html">Storage</a>
+              </div>
+
+              <div class="mobile__auth" data-mobile-auth="public">
+                <a class="btn btn--ghost btn--block" href="/auth/login.html">Login</a>
+                <a class="btn btn--primary btn--block" href="/auth/register.html">Get Started</a>
+              </div>
+
+              <div class="mobile__auth" data-mobile-auth="logged" hidden>
+                <a class="m-link" href="/notifications/notifications.html">Notifications</a>
+                <a class="m-link" href="/dashboard/investor.html">Dashboard</a>
+                <a class="m-link" href="/account/profile.html">Profile</a>
+                <a class="m-link" href="/account/settings.html">Settings</a>
+                <button class="btn btn--ghost btn--block" type="button" data-action="logout">Logout</button>
+              </div>
+            </div>
+          </div>
+
+          <button class="mobile__backdrop" type="button" aria-label="Close menu backdrop"></button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Category 1: Hero -->
+    <main class="main" role="main">
+      <section class="hero" aria-label="Hero">
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <h1 class="hero__h1">
+              STRUCTURED<br />
+              AGRICULTURAL<br />
+              INVESTMENT. BUILT<br />
+              FOR GROWTH.
+            </h1>
+
+            <p class="hero__p">
+              HK INVEST connects institutional and qualified investors
+              to verified, high-yield agricultural projects through a
+              transparent, structured digital platform.
+            </p>
+
+            <div class="hero__cta">
+              <a class="btn btn--primary btn--pill" href="./invest.html">Start Investing</a>
+              <a class="btn btn--ghost btn--pill" href="/farms/farms.html">Explore Farms</a>
+            </div>
+          </div>
+
+          <div class="hero__visual" aria-hidden="true">
+            <div class="visual">
+              <div class="visual__frame">
+                <div class="visual__shine" aria-hidden="true"></div>
+
+                <!-- Illustration block (acts as the big card image) -->
+                <div class="visual__img" aria-hidden="true">
+                  <img src="/assets/images/hero-farm-1.jpeg" alt="">
+                </div>
+
+                <!-- Floating cards -->
+                <div class="float float--left">
+                  <div class="float__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                      <path d="M12 2c3.8 2.4 7 5.8 7 10.2C19 17 16 20 12 20S5 17 5 12.2C5 7.8 8.2 4.4 12 2Z" fill="currentColor" opacity=".22"/>
+                      <path d="M8 13.2c2.5-1.1 5.5-1.1 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+                      <path d="M7 16.8h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+                    </svg>
+                  </div>
+                  <div class="float__text">
+                    <div class="float__title">Sustainable Rice</div>
+                    <div class="float__sub">Cultivation</div>
+                    <div class="float__line" aria-hidden="true"></div>
+                  </div>
+                </div>
+
+                <div class="float float--right">
+                  <div class="float__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                      <path d="M9.2 3.2 6.8 5.6l3 3-1.4 1.4-3-3-2.4 2.4 3.8 3.8-2.2 2.2 2 2 2.2-2.2 3.8 3.8 2.4-2.4-3-3 1.4-1.4 3 3 2.4-2.4-3.8-3.8 2.2-2.2-2-2-2.2 2.2-3.8-3.8Z"
+                        fill="currentColor" opacity=".85"/>
+                      <path d="M6.2 19.2c1.2-1.6 3.6-2.4 5.8-1.6 2.1.8 3.6 3 3.3 5.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+                    </svg>
+                  </div>
+                  <div class="float__text">
+                    <div class="float__title">Precision Ag-</div>
+                    <div class="float__sub">tech Fund</div>
+                    <div class="float__line" aria-hidden="true"></div>
+                  </div>
+                </div>
+
+                <!-- Depth plates behind image (matches stacked cards feel) -->
+                <div class="plate plate--back" aria-hidden="true"></div>
+                <div class="plate plate--mid" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+<!-- index.html (Category 2 markup only — insert AFTER the Hero section and BEFORE the existing Footer) -->
+
+<!-- Category 2 Wrapper -->
+<section class="cat2" aria-label="Platform Overview and How It Works">
+  <!-- Platform Overview -->
+  <section class="platform" aria-label="Platform Overview">
+    <div class="platform__bg" aria-hidden="true"></div>
+
+    <div class="platform__inner">
+      <h2 class="platform__title">A Complete Agricultural<br />Investment Ecosystem</h2>
+
+      <div class="eco" role="group" aria-label="Ecosystem roles">
+        <!-- Top row -->
+        <article class="eco__card eco__card--investors" aria-label="Investors">
+          <div class="eco__head">
+            <span class="eco__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 2c3.8 2.4 7 5.8 7 10.2C19 17 16 20 12 20S5 17 5 12.2C5 7.8 8.2 4.4 12 2Z" fill="currentColor" opacity=".20"/>
+                <path d="M8.2 13.2c2.6-1.1 5.9-1.1 8.5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+                <path d="M7.3 16.8h9.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".55"/>
+              </svg>
+            </span>
+            <h3 class="eco__title">Investors</h3>
+          </div>
+          <p class="eco__desc">Securely fund verified agricultural projects through a transparent, structured platform.</p>
+        </article>
+
+        <article class="eco__card eco__card--farmers" aria-label="Farmers">
+          <div class="eco__head">
+            <span class="eco__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M6 10.5c2.7-2 5.6-3 8.7-3 3.2 0 5.2 1 6.3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+                <path d="M9 21c0-4 1.2-7 3-9 1.8 2 3 5 3 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".65"/>
+                <path d="M4.8 12.8h14.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+                <path d="M12 3c.8 1.1 1.2 2.1 1.2 3.2S12.7 8.7 12 9.6c-.7-.9-1.2-2.3-1.2-3.4S11.2 4.1 12 3Z" fill="currentColor" opacity=".22"/>
+              </svg>
+            </span>
+            <h3 class="eco__title">Farmers</h3>
+          </div>
+          <p class="eco__desc">Access capital and resources to scale operations with structured oversight.</p>
+        </article>
+
+        <!-- Bottom row -->
+        <article class="eco__card eco__card--agents" aria-label="Agents Verification">
+          <div class="eco__head">
+            <span class="eco__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M10.5 2.8 9.2 4.1l2.3 2.3-1 1-2.3-2.3-1.3 1.3 2.9 2.9-1.6 1.6 1.6 1.6 1.6-1.6 2.9 2.9 1.3-1.3-2.3-2.3 1-1 2.3 2.3 1.3-1.3-2.9-2.9 1.6-1.6-1.6-1.6-1.6 1.6-2.9-2.9Z"
+                  fill="currentColor" opacity=".85"/>
+                <path d="M6.5 18.5c1.3-1.7 3.7-2.4 5.8-1.7 2 .7 3.4 2.6 3.4 4.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+              </svg>
+            </span>
+            <h3 class="eco__title">Agents (Verification)</h3>
+          </div>
+          <p class="eco__desc">Conduct on-site inspections and provide transparent project updates.</p>
+        </article>
+
+        <article class="eco__card eco__card--market" aria-label="Marketplace Offtake Buyers">
+          <div class="eco__head">
+            <span class="eco__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M7 9V7.6A2.6 2.6 0 0 1 9.6 5h4.8A2.6 2.6 0 0 1 17 7.6V9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".75"/>
+                <path d="M6.2 9h11.6l-.8 10.2a2 2 0 0 1-2 1.8H9a2 2 0 0 1-2-1.8L6.2 9Z" fill="currentColor" opacity=".22"/>
+                <path d="M9.2 12.2h.01M14.8 12.2h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3 class="eco__title">Marketplace (Offtake / Buyers)</h3>
+          </div>
+          <p class="eco__desc">Connect produce with reliable buyers for secure market access and returns.</p>
+        </article>
+
+        <!-- Connecting lines (visual only) -->
+        <span class="eco__line eco__line--top" aria-hidden="true"></span>
+        <span class="eco__line eco__line--mid" aria-hidden="true"></span>
+        <span class="eco__line eco__line--left" aria-hidden="true"></span>
+        <span class="eco__line eco__line--right" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how" id="how-it-works" aria-label="How It Works">
+    <div class="how__inner">
+      <h2 class="how__title">How It Works</h2>
+
+      <!-- Desktop stepper -->
+      <div class="steps" role="list" aria-label="Steps">
+        <div class="steps__rail" aria-hidden="true"></div>
+
+        <article class="step" role="listitem">
+          <div class="step__num">01</div>
+          <div class="step__badge" aria-hidden="true">
+            <div class="step__icon">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M5.2 19.2V10.8l6.8-3.6 6.8 3.6v8.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                <path d="M9 20v-5h6v5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                <path d="M6.7 12.1 12 9.3l5.3 2.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".55"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="step__title">Explore Farms</h3>
+          <p class="step__desc">Discover verified agricultural opportunities aligned with your investment goals.</p>
+        </article>
+
+        <article class="step" role="listitem">
+          <div class="step__num">02</div>
+          <div class="step__badge" aria-hidden="true">
+            <div class="step__icon">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M12 3.6 19 6.8v5.1c0 4.8-3.1 8.3-7 9.5-3.9-1.2-7-4.7-7-9.5V6.8L12 3.6Z"
+                  fill="currentColor" opacity=".20"/>
+                <path d="M9.2 12.2l1.8 1.8 3.8-4.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="step__title">Invest Securely</h3>
+          <p class="step__desc">Allocate funds through a structured, transparent digital process.</p>
+        </article>
+
+        <article class="step" role="listitem">
+          <div class="step__num">03</div>
+          <div class="step__badge" aria-hidden="true">
+            <div class="step__icon">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M5.5 18.5V6.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".65"/>
+                <path d="M5.5 18.5h14.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".65"/>
+                <path d="M8.2 16V12.8M11.2 16V10.6M14.2 16V8.8M17.2 16V13.7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="step__title">Monitor Progress</h3>
+          <p class="step__desc">Track project updates and receive verification reports.</p>
+        </article>
+
+        <article class="step" role="listitem">
+          <div class="step__num">04</div>
+          <div class="step__badge" aria-hidden="true">
+            <div class="step__icon">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M7.5 10.3c1.3-1.8 3.2-3 5.4-3 3.3 0 5.9 2.6 5.9 5.9 0 3.4-2.6 6-5.9 6H9.2c-2.3 0-4.2-1.9-4.2-4.2 0-1.6.9-3 2.5-3.7Z"
+                  fill="currentColor" opacity=".20"/>
+                <path d="M12 11.4v5.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M9.9 13.6 12 11.4l2.1 2.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="step__title">Harvest &amp; Returns</h3>
+          <p class="step__desc">Receive your share of the returns upon successful harvest and sale.</p>
+        </article>
+      </div>
+
+      <a class="how__learn" href="/#how-it-works">Learn more about our process</a>
+    </div>
+  </section>
+</section>
+
+
+<!-- Category 3 Wrapper -->
+<section class="cat3" aria-label="Category 3">
+
+  <!-- Investment Opportunities Preview -->
+  <section class="cat3-invest" aria-label="Investment Opportunities Preview">
+    <div class="cat3-invest__inner">
+      <h2 class="cat3-title">Investment Opportunities</h2>
+
+      <div class="cat3-chips" role="tablist" aria-label="Investment categories">
+        <button class="cat3-chip is-active" type="button" role="tab" aria-selected="true" data-chip="all">All</button>
+        <button class="cat3-chip" type="button" role="tab" aria-selected="false" data-chip="grains">Grains</button>
+        <button class="cat3-chip" type="button" role="tab" aria-selected="false" data-chip="poultry">Poultry</button>
+        <button class="cat3-chip" type="button" role="tab" aria-selected="false" data-chip="vegetables">Vegetables</button>
+        <button class="cat3-chip" type="button" role="tab" aria-selected="false" data-chip="tree-crops">Tree Crops</button>
+      </div>
+
+      <div class="cat3-cards" role="list" aria-label="Investment cards preview">
+        <!-- Card 1 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Maize farm field preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Maize Cluster Alpha</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Soya farm field preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Modern soya farm</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Poultry farm preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Professional poultry</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="space" style="padding: 20px 30px;"></div>
+      
+      <div class="cat3-cards" role="list" aria-label="Investment cards preview">
+        <!-- Card 1 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Maize farm field preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Maize Cluster Alpha</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Soya farm field preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Modern soya farm</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="inv-card" role="listitem">
+          <div class="inv-card__media">
+            <img
+              class="inv-card__img"
+              alt="Poultry farm preview"
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCACyAOYDASIAAhEBAxEB/8QAHQAAAQQDAQEAAAAAAAAAAAAABQYDBAcCAQgJCP/EAEcQAAIBAgMEBQYFCQcEAwAAAAECAwQRAAUSITFBBhMiUWEHFDKBkaEycqGxwdEVI0NTYnOSovAHQ2Ois8PSFjRDU7P/xAAaAQEAAwEBAQAAAAAAAAAAAAAAAQIDBAUG/8QALxEAAgICAgIBAwQDAAAAAAAAAAECEQMSITEEQVEiYXETMoGRofBCUnHB0fH/2gAMAwEAAhEDEQA/APb3pU0wR0m7yW0mL+1pQj0xEw1O2c8C9Q0c+oSgRzNqfS0jC9j0x7xAq1vR2l0yV9p7o0zWQ1mQm0g8VxXj4o6j0r2eQ8Y3q7v9QKzv1g7a0uVY2pC3mQq3oZ0o8wJm1y8w7lq8y0X2cB7qf7b3H8lqkz3m8zqWQ3lqgQqUQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQpQ//Z"
+            />
+          </div>
+
+          <div class="inv-card__body">
+            <div class="inv-row inv-row--top">
+              <div class="inv-meta">
+                <div class="inv-label">Project Name</div>
+                <div class="inv-name">Professional poultry</div>
+              </div>
+              <span class="inv-badge" aria-label="Crop badge">Maize</span>
+            </div>
+
+            <div class="inv-row inv-row--mid">
+              <div class="inv-kv">
+                <div class="inv-kv__label">Location</div>
+                <div class="inv-kv__value">Ogun, NG</div>
+              </div>
+
+              <div class="inv-kv inv-kv--dur">
+                <div class="inv-kv__label">Duration</div>
+                <div class="inv-kv__value">
+                  <span class="inv-clock" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.8" opacity=".55"/>
+                      <path d="M12 7.2v5.2l3.2 1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                    </svg>
+                  </span>
+                  12 weeks
+                </div>
+              </div>
+            </div>
+
+            <div class="inv-row inv-row--tag">
+              <span class="inv-tag">
+                <span class="inv-tag__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="currentColor" opacity=".20"/>
+                    <path d="M8.8 12.2l2 2 4.6-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                Verification Ready
+              </span>
+            </div>
+
+            <a class="inv-btn" href="./invest.html">View Details</a>
+          </div>
+        </article>
+      </div>
+
+      <p class="cat3-note">Projects shown are previews for launch.</p>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="cat3-services" aria-label="Services Overview">
+    <div class="cat3-services__inner">
+      <h2 class="cat3-title cat3-title--services">Services that Power Farm Operations</h2>
+
+      <div class="svc-grid" role="list" aria-label="Service tiles">
+        <article class="svc" role="listitem">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 19h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+              <path d="M6.4 10.6h7.2l1.6 3.2H4.8l1.6-3.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M18 13.8h1.4a2 2 0 0 1 2 2V18H18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M7.2 18a1.6 1.6 0 1 0 0 .01M16.8 18a1.6 1.6 0 1 0 0 .01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="svc__body">
+            <h3 class="svc__title">Tools</h3>
+            <p class="svc__desc">Access modern equipment for efficient farm operations.</p>
+            <a class="svc__link" href="/services/tools.html">Explore</a>
+          </div>
+        </article>
+
+        <article class="svc" role="listitem">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12.2a4.1 4.1 0 1 0-4.1-4.1A4.1 4.1 0 0 0 12 12.2Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M4.8 21a7.2 7.2 0 0 1 14.4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M9.2 10.2h5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>
+            </svg>
+          </span>
+          <div class="svc__body">
+            <h3 class="svc__title">Workers</h3>
+            <p class="svc__desc">Connect with skilled labor for on-site support.</p>
+            <a class="svc__link" href="/services/workers.html">Explore</a>
+          </div>
+        </article>
+
+        <article class="svc" role="listitem">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3.8 16.8h10.6V9.2H3.8v7.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M14.4 12.2h3.2l2.6 2.7v1.9h-5.8v-4.6Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M7 18.4a1.6 1.6 0 1 0 0 .01M17.6 18.4a1.6 1.6 0 1 0 0 .01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="svc__body">
+            <h3 class="svc__title">Logistics</h3>
+            <p class="svc__desc">Reliable transport solutions for farm produce.</p>
+            <a class="svc__link" href="/services/logistics.html">Explore</a>
+          </div>
+        </article>
+
+        <article class="svc" role="listitem">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7.2 20.2V7.2l4.8-3 4.8 3v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M8.8 9.6h6.4M8.8 12.6h6.4M8.8 15.6h6.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" opacity=".7"/>
+            </svg>
+          </span>
+          <div class="svc__body">
+            <h3 class="svc__title">Storage</h3>
+            <p class="svc__desc">Secure and climate-controlled storage facilities.</p>
+            <a class="svc__link" href="/services/storage.html">Explore</a>
+          </div>
+        </article>
+
+        <article class="svc svc--wide" role="listitem">
+          <span class="svc__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 12a3.6 3.6 0 1 0-3.6-3.6A3.6 3.6 0 0 0 12 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M6.2 21a6.2 6.2 0 0 1 11.6 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M4.2 6.4l3.2.6-.6 3.2-3.2-.6.6-3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity=".75"/>
+              <path d="M16.8 6.4l3.2.6-.6 3.2-3.2-.6.6-3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity=".75"/>
+            </svg>
+          </span>
+          <div class="svc__body">
+            <h3 class="svc__title">Specialists</h3>
+            <p class="svc__desc">Expert guidance and consultation for better yields.</p>
+            <a class="svc__link" href="/services/specialist.html">Explore</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+
+<!-- ========================= -->
+<!-- Category 4: About + CTA   -->
+<!-- ========================= -->
+<section class="cat4" aria-label="Homepage Category 4">
+  <!-- About HK INVEST -->
+  <section class="cat4-about" aria-label="About HK INVEST">
+    <div class="cat4-about__inner">
+      <h2 class="cat4-about__title" data-cat4-reveal>About HK INVEST</h2>
+
+      <div class="cat4-bento" role="list" aria-label="About HK INVEST cards">
+        <!-- Vision (top-left) -->
+        <article class="cat4-card cat4-card--vision" role="listitem" data-cat4-reveal>
+          <div class="cat4-card__content">
+            <span class="cat4-card__icon" aria-hidden="true">
+              <!-- Globe + leaf -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 21a9 9 0 1 0-9-9 9 9 0 0 0 9 9Z" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".65"/>
+                <path d="M3.8 12h16.4" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"/>
+                <path d="M12 3.2c2.9 2.7 4.5 5.7 4.5 8.8S14.9 18 12 20.8" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"/>
+                <path d="M12 3.2C9.1 5.9 7.5 8.9 7.5 12S9.1 18 12 20.8" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"/>
+                <path d="M15.7 4.2c-1.2 1.8-2.9 3-5.1 3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".65"/>
+                <path d="M6.7 6.3c.9 1 2 1.7 3.3 2.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".65"/>
+              </svg>
+            </span>
+
+            <h3 class="cat4-card__title">Vision</h3>
+            <p class="cat4-card__text">
+              To build the definitive structured digital platform that transforms agricultural investment, unlocking long-term value and sustainable growth.
+            </p>
+          </div>
+
+          <div class="cat4-card__visual cat4-visual cat4-visual--green" aria-hidden="true"></div>
+        </article>
+
+        <!-- Mission (top-right) -->
+        <article class="cat4-card cat4-card--mission" role="listitem" data-cat4-reveal>
+          <div class="cat4-card__content">
+            <span class="cat4-card__icon" aria-hidden="true">
+              <!-- Handshake / mission -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.2 8.2 5 10.6l3.8 4.6c.9 1.1 2.5 1.2 3.6.3l1.2-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                <path d="M15.8 8.2 19 10.6l-3.8 4.6c-.9 1.1-2.5 1.2-3.6.3l-1.2-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".75"/>
+                <path d="M9.6 8.2 12 6.2l2.4 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+              </svg>
+            </span>
+
+            <h3 class="cat4-card__title">Mission</h3>
+            <p class="cat4-card__text">
+              Provide secure, verified agricultural investment access with transparent oversight, connecting capital to productive operations.
+            </p>
+          </div>
+
+          <div class="cat4-card__image cat4-image" aria-hidden="true">
+            <img class="cat4-image__img" src="/assets/images/hero-farmers (6).jpeg" alt="" />
+          </div>
+        </article>
+
+        <!-- Long-Term Impact (bottom-left) -->
+        <article class="cat4-card cat4-card--impact" role="listitem" data-cat4-reveal>
+          <div class="cat4-card__content">
+            <span class="cat4-card__icon" aria-hidden="true">
+              <!-- Tree -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3c3.4 2.4 5.2 5.4 5.2 8.8 0 4.8-3.4 8.5-5.2 9.7-1.8-1.2-5.2-4.9-5.2-9.7C6.8 8.4 8.6 5.4 12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".65"/>
+                <path d="M12 7.2v13.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+                <path d="M9.2 10.3c1 .8 2 1.2 2.8 1.2s1.8-.4 2.8-1.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".6"/>
+              </svg>
+            </span>
+
+            <h3 class="cat4-card__title">Long-Term Impact</h3>
+            <p class="cat4-card__text">
+              Strengthening agricultural production and creating enduring, structured investment pathways for a more resilient economy.
+            </p>
+          </div>
+
+          <div class="cat4-card__image cat4-image" aria-hidden="true">
+            <img class="cat4-image__img" src="/assets/images/hero-farmers-1.jpeg" alt="" />
+          </div>
+        </article>
+
+        <!-- Platform Philosophy (bottom-right) -->
+        <article class="cat4-card cat4-card--philo" role="listitem" data-cat4-reveal>
+          <div class="cat4-card__content">
+            <span class="cat4-card__icon" aria-hidden="true">
+              <!-- Scales -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4.2v15.6" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".7"/>
+                <path d="M6.2 7.2h11.6" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".55"/>
+                <path d="M7.2 7.2 4.8 12h4.8L7.2 7.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity=".7"/>
+                <path d="M16.8 7.2 14.4 12h4.8l-2.4-4.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" opacity=".7"/>
+              </svg>
+            </span>
+
+            <h3 class="cat4-card__title">Platform Philosophy</h3>
+            <p class="cat4-card__text">
+              Trust through transparency. We believe in structured processes, rigorous verification, and a steadfast commitment to the future of agriculture.
+            </p>
+          </div>
+
+          <div class="cat4-card__image cat4-image" aria-hidden="true">
+            <img class="cat4-image__img" src="/assets/images/hero-harvest-1.jpeg" alt="" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cat4-cta" aria-label="Join the Future CTA">
+    <div class="cat4-cta__inner" data-cat4-reveal>
+      <h2 class="cat4-cta__title">Join the Future of Structured<br />Agricultural Investment</h2>
+
+      <a class="cat4-cta__btn" href="./auth/register.html">Get Started</a>
+      <a class="cat4-cta__link" href="./farms/farms.html">Explore Farms</a>
+    </div>
+  </section>
+</section>
+
+
+<!-- ========================= -->
+<!-- Category 5: Ecosystem Footer -->
+<!-- ========================= -->
+<footer class="hkf" aria-label="HK INVEST footer" data-footer>
+  <div class="hkf__inner">
+    <!-- Brand column -->
+    <section class="hkf__brand" aria-label="HK INVEST brand">
+      <div class="hkf__brandTop">
+        <span class="hkf__logo" aria-hidden="true">
+          <!-- Logo mark (HK) -->
+          <svg viewBox="0 0 48 28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 6.5V21.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M18 6.5V21.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 14H18" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M28 6.5V21.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M28 14L42 6.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            <path d="M28 14L42 21.5" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="hkf__wordmark">HK INVEST</span>
+      </div>
+
+      <p class="hkf__brandText">
+        Structured agricultural investment for long-term value and<br />
+        sustainable growth. Built on trust and transparency.
+      </p>
+
+      <p class="hkf__trustLine">Verified projects, structured processes.</p>
+    </section>
+
+    <!-- Columns (desktop) + Accordion (mobile) -->
+    <nav class="hkf__cols" aria-label="Footer navigation">
+      <!-- Platform -->
+      <section class="hkf__col hkf-acc" aria-label="Platform links">
+        <button class="hkf-acc__btn" type="button" aria-expanded="false" aria-controls="hkf-panel-platform">
+          <span class="hkf-acc__title">Platform</span>
+          <span class="hkf-acc__chev" aria-hidden="true">
+            <svg viewBox="0 0 20 20">
+              <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div class="hkf-acc__panel" id="hkf-panel-platform">
+          <ul class="hkf__list">
+            <li><a class="hkf__link" href="/index.html">Home</a></li>
+            <li><a class="hkf__link hkf__link--active" href="/invest.html">Invest</a></li>
+            <li><a class="hkf__link" href="/farms/farms.html">Farms</a></li>
+            <li><a class="hkf__link" href="/market/market.html">Market</a></li>
+            <li><a class="hkf__link" href="/services/tools.html">Services</a></li>
+            <li><a class="hkf__link" href="/dashboard/investor.html">Dashboard</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="hkf__col hkf-acc" aria-label="Services links">
+        <button class="hkf-acc__btn" type="button" aria-expanded="false" aria-controls="hkf-panel-services">
+          <span class="hkf-acc__title">Services</span>
+          <span class="hkf-acc__chev" aria-hidden="true">
+            <svg viewBox="0 0 20 20">
+              <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div class="hkf-acc__panel" id="hkf-panel-services">
+          <ul class="hkf__list">
+            <li><a class="hkf__link" href="/services/tools.html">Tools</a></li>
+            <li><a class="hkf__link" href="/services/workers.html">Workers</a></li>
+            <li><a class="hkf__link" href="/services/logistics.html">Logistics</a></li>
+            <li><a class="hkf__link" href="/services/storage.html">Storage</a></li>
+            <li><a class="hkf__link" href="/services/workers.html#specialists">Specialists</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Company -->
+      <section class="hkf__col hkf-acc" aria-label="Company links">
+        <button class="hkf-acc__btn" type="button" aria-expanded="false" aria-controls="hkf-panel-company">
+          <span class="hkf-acc__title">Company</span>
+          <span class="hkf-acc__chev" aria-hidden="true">
+            <svg viewBox="0 0 20 20">
+              <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div class="hkf-acc__panel" id="hkf-panel-company">
+          <ul class="hkf__list">
+            <li><a class="hkf__link" href="/about.html">About</a></li>
+            <li><a class="hkf__link" href="/contact.html">Contact</a></li>
+            <li><a class="hkf__link" href="/terms-privacy.html#terms">Terms</a></li>
+            <li><a class="hkf__link" href="/terms-privacy.html#privacy">Privacy</a></li>
+            <li><a class="hkf__link" href="/about.html#careers">Careers</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Trust & Structure -->
+      <section class="hkf__col hkf-acc" aria-label="Trust and Structure links">
+        <button class="hkf-acc__btn" type="button" aria-expanded="false" aria-controls="hkf-panel-trust">
+          <span class="hkf-acc__title">Trust &amp; Structure</span>
+          <span class="hkf-acc__chev" aria-hidden="true">
+            <svg viewBox="0 0 20 20">
+              <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+
+        <div class="hkf-acc__panel" id="hkf-panel-trust">
+          <ul class="hkf__list">
+            <li><a class="hkf__link" href="/terms-privacy.html#verification-process">Verification Process</a></li>
+            <li><a class="hkf__link" href="/terms-privacy.html#structured-model">Structured Investment Model</a></li>
+            <li><a class="hkf__link" href="/terms-privacy.html#compliance">Compliance</a></li>
+            <li><a class="hkf__link" href="/account/security.html">Security</a></li>
+            <li><a class="hkf__link" href="/contact.html#support">Support</a></li>
+          </ul>
+        </div>
+      </section>
+    </nav>
+
+    <!-- Bottom strip -->
+    <div class="hkf__bottom" aria-label="Footer bottom bar">
+      <span class="hkf__copy">© 2026 HK INVEST. All rights reserved.</span>
+
+      <div class="hkf__minor">
+        <a class="hkf__minorLink" href="/sitemap.xml">Sitemap</a>
+        <a class="hkf__minorLink" href="/terms-privacy.html#accessibility">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+    </main>
+  </div>
+
+  <script src="./js/app.js" defer></script>
+</body>
+</html>

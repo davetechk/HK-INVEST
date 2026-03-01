@@ -1,0 +1,241 @@
+/* css/base.css */
+/* =========================================================
+   HK INVEST — Base CSS (Foundation Only)
+   - Reset + Design Tokens + Typography + Base Foundations
+   - No components, no layout grids, no animations, no media queries
+   ========================================================= */
+
+/* =========================================================
+   1) CSS RESET / NORMALIZE
+   ========================================================= */
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+html,
+body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6,
+p,
+figure,
+blockquote,
+dl,
+dd{
+  margin: 0;
+}
+
+ul,
+ol{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg{
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select{
+  font: inherit;
+  color: inherit;
+}
+
+button{
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select{
+  border: 0;
+  background: transparent;
+}
+
+textarea{
+  resize: vertical;
+}
+
+:focus{
+  outline: none;
+}
+
+:focus-visible{
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+hr{
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0;
+}
+
+/* =========================================================
+   2) ROOT VARIABLES (DESIGN TOKENS)
+   ========================================================= */
+
+:root{
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing scale */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* Shadows (subtle, premium) */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.10), 0 0 0 1px rgba(255,255,255,.06);
+  --shadow-md: 0 10px 24px rgba(0,0,0,.18), 0 0 0 1px rgba(255,255,255,.06);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,.30), 0 0 0 1px rgba(255,255,255,.06);
+
+  /* Z-index scale */
+  --z-base: 0;
+  --z-dropdown: 200;
+  --z-sticky: 400;
+  --z-overlay: 700;
+  --z-modal: 900;
+  --z-toast: 950;
+
+  /* Base colors (neutral, professional) */
+  --bg: #0b0f13;
+  --surface: rgba(255,255,255,.06);
+  --surface-2: rgba(255,255,255,.08);
+
+  --text: rgba(255,255,255,.92);
+  --text-muted: rgba(255,255,255,.68);
+
+  --border-subtle: rgba(255,255,255,.12);
+
+  /* Focus */
+  --focus-ring: rgba(38, 208, 124, .85);
+
+  /* Brand primitives (used by theme/layout later; safe to define here) */
+  --brand-accent: #16b478;
+  --on-accent: #07140f;
+}
+
+/* =========================================================
+   3) TYPOGRAPHY SYSTEM
+   ========================================================= */
+
+html{
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body{
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: geometricPrecision;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+h1{ font-size: 2.25rem; } /* 36px */
+h2{ font-size: 1.875rem; } /* 30px */
+h3{ font-size: 1.5rem; }   /* 24px */
+h4{ font-size: 1.25rem; }  /* 20px */
+h5{ font-size: 1.125rem; } /* 18px */
+h6{ font-size: 1rem; }     /* 16px */
+
+p{
+  line-height: 1.6;
+  color: var(--text);
+}
+
+small{
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+strong,
+b{
+  font-weight: 700;
+}
+
+/* =========================================================
+   4) BASE LAYOUT FOUNDATIONS
+   ========================================================= */
+
+.container{
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-24);
+  padding-right: var(--space-24);
+}
+
+/* =========================================================
+   5) MINIMAL UTILITY HELPERS
+   ========================================================= */
+
+.hidden{
+  display: none !important;
+}
+
+.visually-hidden{
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0,0,0,0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.no-scroll{
+  overflow: hidden !important;
+}
