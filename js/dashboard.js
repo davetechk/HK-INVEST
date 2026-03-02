@@ -267,7 +267,7 @@ async function handlePasswordChange(e) {
 async function handleLogout(e) {
   if (e) e.preventDefault();
   await api.auth.signOut();
-  window.location.href = "./auth/login.html";
+   window.location.href = new URL("../auth/login.html", window.location.href).toString();
 }
 
 document.addEventListener("DOMContentLoaded", initDashboard);
