@@ -52,7 +52,7 @@ export async function initDashboard() {
     const session = s?.data?.session || null;
 
     if (!session?.user?.id) {
-      window.location.href = "/auth/login.html";
+      window.location.href = "../auth/login.html";
       return;
     }
 
@@ -62,12 +62,12 @@ export async function initDashboard() {
     currentProfile = p?.data || null;
 
     if (!currentProfile) {
-      window.location.href = "/auth/pending.html";
+      window.location.href = "../auth/pending.html";
       return;
     }
 
     if (currentProfile.status === "pending") {
-      window.location.href = "/auth/pending.html";
+      window.location.href = "../auth/pending.html";
       return;
     }
 
@@ -77,7 +77,7 @@ export async function initDashboard() {
     await loadRoute("overview");
   } catch (err) {
     console.error(err);
-    window.location.href = "/auth/login.html";
+    window.location.href = "../auth/login.html";
   } finally {
     hideLoading();
   }
@@ -267,7 +267,7 @@ async function handlePasswordChange(e) {
 async function handleLogout(e) {
   if (e) e.preventDefault();
   await api.auth.signOut();
-  window.location.href = "/auth/login.html";
+  window.location.href = "../auth/login.html";
 }
 
 document.addEventListener("DOMContentLoaded", initDashboard);
