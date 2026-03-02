@@ -13,8 +13,8 @@ function normalizeRole(role) {
   return "investor";
 }
 
-function safeNavigate(url) {
-  window.location.href = url;
+function safeNavigate(path) {
+  window.location.href = new URL(path, window.location.href).toString();
 }
 
 /* =========================
