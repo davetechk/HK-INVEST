@@ -2,9 +2,9 @@
 import { api } from "./api.js";
 
 const DASHBOARD_PATHS = {
-  investor: "/dashboard/investor.html",
-  farmer: "/dashboard/farmer.html",
-  agent: "/dashboard/agent.html",
+  investor: "../dashboard/investor.html",
+  farmer: "../dashboard/farmer.html",
+  agent: "../dashboard/agent.html",
 };
 
 function normalizeRole(role) {
@@ -56,7 +56,7 @@ export async function loadProfileAndRedirect(opts = {}) {
   const session = s?.data?.session || null;
 
   if (!session) {
-    safeNavigate("/auth/login.html");
+    safeNavigate("../auth/login.html");
     return { ok: false, reason: "no-session" };
   }
 
@@ -76,7 +76,7 @@ export async function loadProfileAndRedirect(opts = {}) {
       return { ok: false, reason: "missing-profile" };
     }
 
-    safeNavigate("/auth/pending.html");
+    safeNavigate("../auth/pending.html");
     return { ok: false, reason: "missing-profile" };
   }
 
@@ -84,7 +84,7 @@ export async function loadProfileAndRedirect(opts = {}) {
   const role = normalizeRole(profile.role);
 
   if (status === "pending") {
-    safeNavigate("/auth/pending.html");
+    safeNavigate("../auth/pending.html");
     return { ok: true, redirected: "pending" };
   }
 
@@ -93,7 +93,7 @@ export async function loadProfileAndRedirect(opts = {}) {
     return { ok: true, redirected: "dashboard" };
   }
 
-  safeNavigate("/auth/pending.html");
+  safeNavigate("../auth/pending.html");
   return { ok: true, redirected: "pending-default" };
 }
 
