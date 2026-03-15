@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HK INVEST — Admin Portal</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c10;
+      --surface:   #0d1117;
+      --surface2:  #131920;
+      --border:    rgba(255,255,255,0.06);
+      --border2:   rgba(255,255,255,0.1);
+      --text:      #e8eaed;
+      --muted:     rgba(232,234,237,0.45);
+      --faint:     rgba(232,234,237,0.22);
+      --accent:    #c9a84c;
+      --accentDim: rgba(201,168,76,0.12);
+      --accentBorder: rgba(201,168,76,0.3);
+      --green:     #3d7a5a;
+      --greenDim:  rgba(61,122,90,0.15);
+      --red:       #c0392b;
+      --redDim:    rgba(192,57,43,0.1);
+      --redBorder: rgba(192,57,43,0.3);
+      --font:      'Syne', sans-serif;
+      --mono:      'DM Mono', monospace;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Grid layout ── */
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 480px;
+    }
+
+    /* ══════════════════════════════
+       LEFT PANEL
+    ══════════════════════════════ */
+    .left {
+      position: relative;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem;
+      overflow: hidden;
+      border-right: 1px solid var(--border);
+    }
+
+    /* Animated grid background */
+    .left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridDrift 20s linear infinite;
+    }
+
+    @keyframes gridDrift {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(48px, 48px); }
+    }
+
+    /* Glow blob */
+    .left::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+      bottom: -200px;
+      left: -100px;
+      pointer-events: none;
+      animation: blobPulse 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes blobPulse {
+      0%   { transform: scale(1);    opacity: 0.6; }
+      100% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .left-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* Brand */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: fadeDown 0.6s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--accentBorder);
+      border-radius: 8px;
+      background: var(--accentDim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-mark svg { width: 20px; height: 20px; stroke: var(--accent); }
+
+    .brand-name {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text);
+    }
+
+    .brand-tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      background: var(--accentDim);
+      border: 1px solid var(--accentBorder);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-left: 0.25rem;
+    }
+
+    /* Hero text */
+    .hero {
+      margin-top: auto;
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 380px;
+      font-weight: 400;
+    }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    /* Bottom note */
+    .left-note {
+      position: relative;
+      z-index: 1;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+      margin-top: 2rem;
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s both;
+    }
+
+    /* ══════════════════════════════
+       RIGHT PANEL — FORM
+    ══════════════════════════════ */
+    .right {
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem;
+      position: relative;
+    }
+
+    .form-wrap {
+      width: 100%;
+      max-width: 360px;
+    }
+
+    /* Form header */
+    .form-head {
+      margin-bottom: 2.5rem;
+      animation: fadeDown 0.6s cubic-bezier(0.16,1,0.3,1) 0.1s both;
+    }
+
+    .form-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border2);
+      max-width: 48px;
+    }
+
+    .form-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub {
+      font-size: 0.8125rem;
+      color: var(--muted);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* Error */
+    .form-error {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      padding: 0.875rem 1rem;
+      background: var(--redDim);
+      border: 1px solid var(--redBorder);
+      border-radius: 8px;
+      color: #e87e7e;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      margin-bottom: 1.5rem;
+      animation: shake 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .form-error::before {
+      content: '!';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1.5px solid currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+      font-family: var(--mono);
+    }
+
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-6px); }
+      40%     { transform: translateX(6px); }
+      60%     { transform: translateX(-3px); }
+      80%     { transform: translateX(3px); }
+    }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: 1.125rem; }
+
+    .field { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .field-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .input-wrap { position: relative; }
+
+    .field-input {
+      width: 100%;
+      height: 48px;
+      background: var(--surface2);
+      border: 1px solid var(--border2);
+      border-radius: 8px;
+      padding: 0 1rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .field-input::placeholder { color: var(--faint); }
+
+    .field-input:hover { border-color: rgba(255,255,255,0.15); }
+
+    .field-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+      background: var(--surface);
+    }
+
+    .field-input.has-toggle { padding-right: 48px; }
+
+    .toggle-btn {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--faint);
+      border-radius: 6px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .toggle-btn:hover {
+      color: var(--muted);
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* Submit button */
+    .submit-btn {
+      width: 100%;
+      height: 50px;
+      background: var(--accent);
+      color: #0d0a04;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.12) 50%, transparent 65%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,168,76,0.35);
+      filter: brightness(1.05);
+    }
+
+    .submit-btn:hover:not(:disabled)::after { transform: translateX(100%); }
+    .submit-btn:active:not(:disabled) { transform: translateY(0); }
+
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-spinner {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(13,10,4,0.3);
+      border-top-color: rgba(13,10,4,0.9);
+      animation: spin 0.75s linear infinite;
+      display: none;
+      flex-shrink: 0;
+    }
+
+    .submit-btn.is-loading .btn-spinner { display: block; }
+    .submit-btn.is-loading .btn-label   { opacity: 0.6; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Security note */
+    .security-note {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--faint);
+    }
+
+    .security-note svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--accent);
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* Animations */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form items stagger */
+    .form > * {
+      opacity: 0;
+      animation: fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) both;
+    }
+    .form > *:nth-child(1) { animation-delay: 0.2s; }
+    .form > *:nth-child(2) { animation-delay: 0.28s; }
+    .form > *:nth-child(3) { animation-delay: 0.36s; }
+    .form > *:nth-child(4) { animation-delay: 0.44s; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .page { grid-template-columns: 1fr; }
+      .left  { min-height: 300px; padding: 2rem 1.5rem 2.5rem; }
+      .right { padding: 2.5rem 1.5rem; }
+      .hero-title { font-size: 2.25rem; }
+      .stats { gap: 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .left  { padding: 1.5rem; }
+      .right { padding: 2rem 1.25rem; }
+      .form-title { font-size: 1.875rem; }
+      .stats { flex-direction: column; gap: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  </style>
+</head>
+<body data-page="admin-login">
+  <div class="page">
+
+    <!-- ══════════════════════════════
+         LEFT PANEL
+    ══════════════════════════════ -->
+    <div class="left">
+      <div class="left-content">
+
+        <!-- Brand -->
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 20V11"/><path d="M12 20V7"/><path d="M17 20V14"/>
+              <path d="M5 20h14"/>
+              <path d="M10 7c1-2.5 3.5-3.5 5.5-3"/>
+              <path d="M15.5 4c.5 1 .5 2.2 0 3"/>
+              <path d="M16 5.5c2 0 3.5 1.2 4 3"/>
+            </svg>
+          </div>
+          <span class="brand-name">HK INVEST</span>
+          <span class="brand-tag">ADMIN</span>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+          <div class="hero-label">Control Center</div>
+          <h1 class="hero-title">
+            Platform<br>
+            <span>Operations</span><br>
+            Portal.
+          </h1>
+          <p class="hero-sub">
+            Restricted access. Authorised administrators only.
+            All sessions are monitored and every action is logged
+            in the platform audit trail.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-value">256-bit</div>
+              <div class="stat-label">Encryption</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Audited</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">RBAC</div>
+              <div class="stat-label">Access Control</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="left-note">
+          © HK INVEST — Restricted Administrative Interface
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         RIGHT PANEL
+    ══════════════════════════════ -->
+    <div class="right">
+      <div class="form-wrap">
+
+        <div class="form-head">
+          <div class="form-eyebrow">Admin Access</div>
+          <h2 class="form-title">Sign in.</h2>
+          <p class="form-sub">Enter your administrator credentials to continue.</p>
+        </div>
+
+        <!-- Error -->
+        <div id="adminLoginError" class="form-error" style="display:none" role="alert" aria-live="polite"></div>
+
+        <!-- Form -->
+        <form id="adminLoginForm" class="form" novalidate>
+
+          <div class="field">
+            <label class="field-label" for="adminEmail">Email Address</label>
+            <div class="input-wrap">
+              <input
+                class="field-input"
+                type="email"
+                id="adminEmail"
+                name="email"
+                autocomplete="email"
+                placeholder="admin@hkinvest.com"
+                required
+                inputmode="email"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="adminPassword">Password</label>
+            <div class="input-wrap">
+              <input
+                class="field-input has-toggle"
+                type="password"
+                id="adminPassword"
+                name="password"
+                autocomplete="current-password"
+                placeholder="••••••••••"
+                required
+              />
+              <button type="button" class="toggle-btn" id="togglePwd" aria-label="Show password">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="submit-btn" type="submit" id="adminLoginBtn">
+            <span class="btn-label">Access Admin Panel</span>
+            <div class="btn-spinner"></div>
+          </button>
+
+        </form>
+
+        <!-- Security note -->
+        <div class="security-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Secure session — all activity is audited and logged
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { api } from "../js/api.js";
+    import { supabase, SUPABASE_URL, SUPABASE_ANON_KEY } from "../js/supabaseClient.js";
+
+    const form     = document.getElementById("adminLoginForm");
+    const btn      = document.getElementById("adminLoginBtn");
+    const errorEl  = document.getElementById("adminLoginError");
+    const toggleBtn= document.getElementById("togglePwd");
+    const pwdInput = document.getElementById("adminPassword");
+
+    function showError(msg) {
+      errorEl.textContent  = msg;
+      errorEl.style.display = "flex";
+    }
+
+    function hideError() {
+      errorEl.style.display = "none";
+    }
+
+    function setLoading(loading) {
+      btn.disabled = loading;
+      btn.classList.toggle("is-loading", loading);
+    }
+
+    // Password toggle
+    toggleBtn?.addEventListener("click", () => {
+      const isText = pwdInput.type === "text";
+      pwdInput.type = isText ? "password" : "text";
+      toggleBtn.setAttribute("aria-label", isText ? "Show password" : "Hide password");
+    });
+
+    // Form submit
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hideError();
+
+      const email    = document.getElementById("adminEmail").value.trim();
+      const password = document.getElementById("adminPassword").value;
+
+      if (!email || !password) {
+        showError("Email and password are required.");
+        return;
+      }
+
+      setLoading(true);
+
+      try {
+        // Step 1 — Sign in with Supabase
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+
+        const session = data?.session;
+        if (!session?.user?.id) throw new Error("No session returned.");
+
+        // Step 2 — Load profile
+        const profileRes = await api.profile.getMyProfile();
+        const profile    = profileRes?.data || null;
+
+        if (!profile) throw new Error("Profile not found. Contact system administrator.");
+
+        // Step 3 — Check role is admin
+        if (profile.role !== "admin") {
+          await supabase.auth.signOut();
+          throw new Error("Access denied. This portal is for administrators only.");
+        }
+
+        // Step 4 — Check status is approved
+        if (profile.status !== "approved") {
+          await supabase.auth.signOut();
+          throw new Error("Your admin account is not active. Contact the Super Admin.");
+        }
+
+        // Step 5 — Load admin permissions
+        const permRes = await fetch(
+          `${SUPABASE_URL}/rest/v1/admin_permissions?user_id=eq.${encodeURIComponent(session.user.id)}&limit=1`,
+          {
+            headers: {
+              apikey:        SUPABASE_ANON_KEY,
+              Authorization: `Bearer ${session.access_token}`,
+              Accept:        "application/json",
+            },
+          }
+        );
+
+        const permData = await permRes.json();
+        const perms    = Array.isArray(permData) ? permData[0] : null;
+
+        if (!perms || !perms.is_active) {
+          await supabase.auth.signOut();
+          throw new Error("Admin permissions not found or deactivated. Contact the Super Admin.");
+        }
+
+        // Step 6 — Write audit log entry
+        await fetch(`${SUPABASE_URL}/rest/v1/audit_logs`, {
+          method: "POST",
+          headers: {
+            apikey:         SUPABASE_ANON_KEY,
+            Authorization:  `Bearer ${session.access_token}`,
+            "Content-Type": "application/json",
+            Prefer:         "return=minimal",
+          },
+          body: JSON.stringify({
+            admin_id:     session.user.id,
+            admin_name:   profile.full_name || email,
+            action:       "admin_login",
+            target_type:  "admin",
+            target_id:    session.user.id,
+            target_label: profile.full_name || email,
+            new_value:    { email, admin_type: perms.admin_type },
+            notes:        "Admin signed in successfully.",
+          }),
+        });
+
+        // Step 7 — Go to dashboard
+        window.location.href = new URL("dashboard.html", window.location.href).toString();
+
+      } catch (err) {
+        showError(err.message || "Sign in failed. Please try again.");
+        setLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,594 @@
+<!-- auth/pending.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HK INVEST — Account Pending</title>
+  <link rel="stylesheet" href="../css/pages/auth.css">
+  <style>
+    /* ── Pending page layout ── */
+    .hk-pending {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--c-soil);
+      padding: 2rem;
+      font-family: var(--font-body);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Same atmospheric background as auth pages */
+    .hk-pending::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(107,143,113,0.12) 0%, transparent 55%);
+      pointer-events: none;
+      animation: blobShift 14s ease-in-out infinite alternate;
+    }
+
+    @keyframes blobShift {
+      0%   { transform: scale(1) translate(0,0); }
+      100% { transform: scale(1.06) translate(-2%, 2%); }
+    }
+
+    /* Topographic lines */
+    .hk-pending::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600'%3E%3Cg fill='none' stroke='%23c8d5c9' stroke-opacity='.04' stroke-width='1'%3E%3Cellipse cx='400' cy='300' rx='350' ry='250'/%3E%3Cellipse cx='400' cy='300' rx='300' ry='210'/%3E%3Cellipse cx='400' cy='300' rx='250' ry='170'/%3E%3Cellipse cx='400' cy='300' rx='200' ry='130'/%3E%3Cellipse cx='400' cy='300' rx='150' ry='90'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      pointer-events: none;
+    }
+
+    /* ── Card ── */
+    .hk-pendingCard {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(200,213,201,0.1);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: 0 32px 64px rgba(0,0,0,0.3);
+      backdrop-filter: blur(12px);
+      animation: cardIn 0.7s cubic-bezier(0.16,1,0.3,1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)    scale(1); }
+    }
+
+    /* ── Logo ── */
+    .hk-pendingCard__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .hk-pendingCard__logoMark {
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(201,168,76,0.4);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201,168,76,0.07);
+    }
+
+    .hk-pendingCard__logoMark svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--c-gold);
+    }
+
+    .hk-pendingCard__brandText {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--c-ivory);
+    }
+
+    /* ── Status icon ── */
+    .hk-pendingIcon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+      border: 1.5px solid rgba(201,168,76,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.75rem;
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.15); }
+      50%       { box-shadow: 0 0 0 14px rgba(201,168,76,0); }
+    }
+
+    .hk-pendingIcon svg {
+      width: 36px;
+      height: 36px;
+      stroke: var(--c-gold);
+    }
+
+    /* ── Text ── */
+    .hk-pendingCard__title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--c-ivory);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.875rem;
+    }
+
+    .hk-pendingCard__sub {
+      font-size: 0.9rem;
+      color: rgba(200,213,201,0.55);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    .hk-pendingCard__sub strong {
+      color: rgba(200,213,201,0.8);
+      font-weight: 600;
+    }
+
+    /* ── Role badge ── */
+    .hk-roleBadge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 1rem;
+      border-radius: 99px;
+      border: 1px solid rgba(201,168,76,0.25);
+      background: rgba(201,168,76,0.07);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-goldLight);
+      margin-bottom: 2rem;
+    }
+
+    .hk-roleBadge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--c-gold);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    /* ── Steps list ── */
+    .hk-pendingSteps {
+      background: rgba(200,213,201,0.03);
+      border: 1px solid rgba(200,213,201,0.07);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .hk-pendingStep {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+    }
+
+    .hk-pendingStep__num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--c-gold);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .hk-pendingStep__num.is-done {
+      background: rgba(107,143,113,0.15);
+      border-color: rgba(107,143,113,0.4);
+      color: var(--c-sage);
+    }
+
+    .hk-pendingStep__text {
+      font-size: 0.8125rem;
+      color: rgba(200,213,201,0.55);
+      line-height: 1.5;
+    }
+
+    .hk-pendingStep__text strong {
+      display: block;
+      font-weight: 600;
+      color: rgba(200,213,201,0.8);
+      margin-bottom: 0.15rem;
+    }
+
+    /* ── Actions ── */
+    .hk-pendingActions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hk-pendingBtn {
+      width: 100%;
+      height: 48px;
+      border-radius: 10px;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    .hk-pendingBtn--primary {
+      background: var(--c-forest);
+      color: var(--c-ivory);
+      box-shadow: 0 4px 14px rgba(42,61,46,0.35);
+    }
+
+    .hk-pendingBtn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(42,61,46,0.45);
+    }
+
+    .hk-pendingBtn--ghost {
+      background: transparent;
+      color: rgba(200,213,201,0.5);
+      border: 1px solid rgba(200,213,201,0.1);
+    }
+
+    .hk-pendingBtn--ghost:hover {
+      background: rgba(200,213,201,0.04);
+      color: rgba(200,213,201,0.75);
+      border-color: rgba(200,213,201,0.2);
+    }
+
+    /* ── Email display ── */
+    .hk-pendingEmail {
+      font-size: 0.75rem;
+      color: rgba(200,213,201,0.3);
+      margin-top: 1.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hk-pendingEmail span {
+      color: rgba(200,213,201,0.5);
+      font-weight: 500;
+    }
+
+    /* ── Refresh indicator ── */
+    .hk-refreshHint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      color: rgba(200,213,201,0.25);
+      margin-top: 1.5rem;
+      letter-spacing: 0.03em;
+    }
+
+    .hk-refreshDot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(200,213,201,0.25);
+      animation: dotPulse 2.5s ease-in-out infinite;
+    }
+
+    @media (max-width: 480px) {
+      .hk-pendingCard { padding: 2rem 1.5rem; }
+      .hk-pendingCard__title { font-size: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hk-pending">
+    <div class="hk-pendingCard">
+
+      <!-- Logo -->
+      <div class="hk-pendingCard__logo">
+        <div class="hk-pendingCard__logoMark">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 20V11" stroke="currentColor"/>
+            <path d="M12 20V7" stroke="currentColor"/>
+            <path d="M17 20V14" stroke="currentColor"/>
+            <path d="M5 20h14" stroke="currentColor"/>
+            <path d="M10 7c1-2.5 3.5-3.5 5.5-3" stroke="currentColor"/>
+            <path d="M15.5 4c.5 1 .5 2.2 0 3" stroke="currentColor"/>
+            <path d="M16 5.5c2 0 3.5 1.2 4 3" stroke="currentColor"/>
+          </svg>
+        </div>
+        <span class="hk-pendingCard__brandText">HK INVEST</span>
+      </div>
+
+      <!-- Status icon -->
+      <div class="hk-pendingIcon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" stroke="currentColor"/>
+          <path d="M12 6v6l4 2" stroke="currentColor"/>
+        </svg>
+      </div>
+
+      <!-- Role badge — filled by JS -->
+      <div class="hk-roleBadge" id="roleBadge">Pending Review</div>
+
+      <!-- Title & subtitle -->
+      <div class="hk-pendingCard__title">Account Under Review</div>
+      <div class="hk-pendingCard__sub" id="pendingSubText">
+        Your application has been received and is being reviewed by our team.
+        We'll notify you by email once your account is approved.
+      </div>
+
+      <!-- What happens next -->
+      <div class="hk-pendingSteps">
+        <div class="hk-pendingStep">
+          <div class="hk-pendingStep__num is-done">✓</div>
+          <div class="hk-pendingStep__text">
+            <strong>Account Created</strong>
+            Your details have been submitted successfully.
+          </div>
+        </div>
+        <div class="hk-pendingStep">
+          <div class="hk-pendingStep__num">2</div>
+          <div class="hk-pendingStep__text">
+            <strong>Under Review</strong>
+            Our team is verifying your profile and credentials.
+          </div>
+        </div>
+        <div class="hk-pendingStep">
+          <div class="hk-pendingStep__num">3</div>
+          <div class="hk-pendingStep__text">
+            <strong>Access Granted</strong>
+            You'll receive an email and can sign back in to access your dashboard.
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="hk-pendingActions">
+        <button class="hk-pendingBtn hk-pendingBtn--primary" id="checkStatusBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+          Check Approval Status
+        </button>
+        <button class="hk-pendingBtn hk-pendingBtn--ghost" id="logoutBtn">
+          Sign Out
+        </button>
+      </div>
+
+      <!-- Signed in as -->
+      <div class="hk-pendingEmail" id="pendingEmailLine"></div>
+
+      <!-- Auto-check hint -->
+      <div class="hk-refreshHint">
+        <div class="hk-refreshDot"></div>
+        Checking status automatically every 30 seconds
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module">
+    import { api } from "../js/api.js";
+    import { supabase } from "../js/supabaseClient.js";
+
+    const DASHBOARD_PATHS = {
+      investor: "../dashboard/investor.html",
+      farmer:   "../dashboard/farmer.html",
+      agent:    "../dashboard/agent.html",
+    };
+
+    const ROLE_LABELS = {
+      investor: "Investor",
+      farmer:   "Farmer",
+      agent:    "Agent",
+    };
+
+    const ROLE_DESCRIPTIONS = {
+      farmer: "Your farm profile is being reviewed. Once approved you'll be able to list projects and receive funding.",
+      agent:  "Your agent profile is being reviewed. Once approved you'll be able to connect investors with farm opportunities.",
+    };
+
+    function normalizeRole(r) {
+      const role = String(r || "").toLowerCase().trim();
+      return ["investor","farmer","agent"].includes(role) ? role : "investor";
+    }
+
+    function goTo(path) {
+      window.location.href = new URL(path, window.location.href).toString();
+    }
+
+    /* ── Check approval status ── */
+    async function checkStatus(showFeedback = false) {
+      const btn = document.getElementById("checkStatusBtn");
+
+      try {
+        if (showFeedback && btn) {
+          btn.disabled = true;
+          btn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            </svg>
+            Checking…
+          `;
+        }
+
+        const s       = await api.auth.getSession();
+        const session = s?.data?.session || null;
+
+        if (!session) {
+          goTo("../auth/login.html");
+          return;
+        }
+
+        const p       = await api.profile.getMyProfile();
+        const profile = p?.data || null;
+
+        if (!profile) return;
+
+        const status = String(profile.status || "").toLowerCase();
+        const role   = normalizeRole(profile.role);
+
+        if (status === "approved") {
+          goTo(DASHBOARD_PATHS[role] || DASHBOARD_PATHS.investor);
+          return;
+        }
+
+        if (status === "rejected") {
+          document.querySelector(".hk-pendingCard__title").textContent = "Application Declined";
+          document.getElementById("pendingSubText").innerHTML = `
+            Unfortunately your application was not approved at this time.
+            Please contact <strong>support@hkinvest.com</strong> for more information.
+          `;
+          document.getElementById("roleBadge").textContent = "Not Approved";
+          document.getElementById("roleBadge").style.borderColor = "rgba(139,46,46,0.3)";
+          document.getElementById("roleBadge").style.color        = "#e89a9a";
+          document.getElementById("roleBadge").style.background   = "rgba(139,46,46,0.08)";
+          return;
+        }
+
+        // Still pending — show brief feedback
+        if (showFeedback && btn) {
+          btn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            Still pending — we'll notify you by email
+          `;
+          setTimeout(() => {
+            btn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Check Approval Status
+            `;
+            btn.disabled = false;
+          }, 3000);
+        } else if (btn) {
+          btn.disabled = false;
+        }
+
+      } catch {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+            </svg>
+            Check Approval Status
+          `;
+        }
+      }
+    }
+
+    /* ── Init page ── */
+    async function init() {
+      try {
+        const s       = await api.auth.getSession();
+        const session = s?.data?.session || null;
+
+        if (!session) {
+          goTo("../auth/login.html");
+          return;
+        }
+
+        const p       = await api.profile.getMyProfile();
+        const profile = p?.data || null;
+
+        if (!profile) {
+          goTo("../auth/login.html");
+          return;
+        }
+
+        const role   = normalizeRole(profile.role);
+        const status = String(profile.status || "").toLowerCase();
+
+        // Investors should never land here — send straight to dashboard
+        if (role === "investor" && status === "approved") {
+          goTo(DASHBOARD_PATHS.investor);
+          return;
+        }
+
+        // Already approved non-investor
+        if (status === "approved") {
+          goTo(DASHBOARD_PATHS[role] || DASHBOARD_PATHS.investor);
+          return;
+        }
+
+        // Update role badge
+        const badgeEl = document.getElementById("roleBadge");
+        if (badgeEl) badgeEl.textContent = `${ROLE_LABELS[role] || "Account"} — Pending Review`;
+
+        // Update subtitle for farmer/agent
+        const subEl = document.getElementById("pendingSubText");
+        if (subEl && ROLE_DESCRIPTIONS[role]) {
+          subEl.innerHTML = ROLE_DESCRIPTIONS[role];
+        }
+
+        // Show signed-in email
+        const emailEl = document.getElementById("pendingEmailLine");
+        const email   = session.user?.email || profile.email || "";
+        if (emailEl && email) {
+          emailEl.innerHTML = `Signed in as <span>${email}</span>`;
+        }
+
+      } catch {
+        goTo("../auth/login.html");
+      }
+    }
+
+    /* ── Event listeners ── */
+    document.getElementById("checkStatusBtn")?.addEventListener("click", () => {
+      checkStatus(true);
+    });
+
+    document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+      await api.auth.signOut();
+      goTo("../auth/login.html");
+    });
+
+    /* ── Auto-check every 30 seconds ── */
+    init();
+    setInterval(() => checkStatus(false), 30_000);
+  </script>
+</body>
+</html>

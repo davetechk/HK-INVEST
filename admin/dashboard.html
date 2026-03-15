@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HK INVEST — Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="admin-dashboard">
+
+  <div class="admin-shell">
+
+    <!-- ══════════════════════════════
+         SIDEBAR
+    ══════════════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-brand">
+          <div class="sidebar-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 20V11"/><path d="M12 20V7"/><path d="M17 20V14"/>
+              <path d="M5 20h14"/>
+              <path d="M10 7c1-2.5 3.5-3.5 5.5-3"/>
+              <path d="M15.5 4c.5 1 .5 2.2 0 3"/>
+              <path d="M16 5.5c2 0 3.5 1.2 4 3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="sidebar-brand-name">HK INVEST</div>
+            <div class="sidebar-brand-tag">Admin Portal</div>
+          </div>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main</div>
+        <ul class="nav-list">
+          <li class="nav-item active" data-route="overview">
+            <a href="#" class="nav-link">
+              <i class="fas fa-chart-pie"></i>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="users">
+            <a href="#" class="nav-link">
+              <i class="fas fa-users"></i>
+              <span>User Management</span>
+              <span class="nav-badge" id="pendingBadge">0</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="admins" data-permission="can_manage_admins">
+            <a href="#" class="nav-link">
+              <i class="fas fa-user-shield"></i>
+              <span>Admin Management</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">Operations</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-route="farms" data-permission="can_manage_farms">
+            <a href="#" class="nav-link">
+              <i class="fas fa-tractor"></i>
+              <span>Farms Management</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="investments">
+            <a href="#" class="nav-link">
+              <i class="fas fa-chart-line"></i>
+              <span>Investments</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="transactions" data-permission="can_manage_finance">
+            <a href="#" class="nav-link">
+              <i class="fas fa-exchange-alt"></i>
+              <span>Transactions</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">Content</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-route="updates">
+            <a href="#" class="nav-link">
+              <i class="fas fa-newspaper"></i>
+              <span>Updates & Reports</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="documents">
+            <a href="#" class="nav-link">
+              <i class="fas fa-folder-open"></i>
+              <span>Documents</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="support" data-permission="can_manage_support">
+            <a href="#" class="nav-link">
+              <i class="fas fa-headset"></i>
+              <span>Support Tickets</span>
+              <span class="nav-badge nav-badge--red" id="ticketsBadge">0</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="notifications" data-permission="can_manage_notifications">
+            <a href="#" class="nav-link">
+              <i class="fas fa-bell"></i>
+              <span>Notifications</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">System</div>
+        <ul class="nav-list">
+          <li class="nav-item" data-route="audit" data-permission="can_view_logs">
+            <a href="#" class="nav-link">
+              <i class="fas fa-clipboard-list"></i>
+              <span>Audit Logs</span>
+            </a>
+          </li>
+          <li class="nav-item" data-route="settings" data-permission="can_manage_settings">
+            <a href="#" class="nav-link">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="admin-badge">
+          <div class="admin-avatar" id="sidebarAvatar">SA</div>
+          <div class="admin-info">
+            <div class="admin-name" id="sidebarName">Loading...</div>
+            <div class="admin-type" id="sidebarType">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn" title="Sign out">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- ══════════════════════════════
+         MAIN CONTENT
+    ══════════════════════════════ -->
+    <main class="main-content">
+
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="topbar-title-wrap">
+            <h1 class="topbar-title" id="pageTitle">Overview</h1>
+            <div class="topbar-breadcrumb" id="pageBreadcrumb">Admin / Overview</div>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-search">
+            <i class="fas fa-search"></i>
+            <input type="search" placeholder="Search users, farms, tickets..." id="globalSearch" />
+          </div>
+
+          <button class="topbar-icon-btn" id="notiBtn" aria-label="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="dot" id="notiDot" style="display:none"></span>
+          </button>
+
+          <div class="topbar-profile" id="topbarProfile">
+            <div class="topbar-avatar" id="topbarAvatar">SA</div>
+            <div class="topbar-profile-info">
+              <div class="topbar-profile-name" id="topbarName">Loading...</div>
+              <div class="topbar-profile-role" id="topbarRole">Super Admin</div>
+            </div>
+            <i class="fas fa-chevron-down" style="font-size:0.7rem;color:var(--muted)"></i>
+
+            <!-- Profile dropdown -->
+            <div class="profile-dropdown" id="profileDropdown">
+              <div class="profile-dropdown-header">
+                <div class="pd-name" id="dropdownName">Admin</div>
+                <div class="pd-email" id="dropdownEmail">admin@hkinvest.com</div>
+              </div>
+              <hr>
+              <a href="#" data-route="settings" class="pd-item">
+                <i class="fas fa-cog"></i> Settings
+              </a>
+              <a href="#" id="dropdownLogout" class="pd-item pd-item--danger">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content area -->
+      <div class="content-area">
+        <!-- Loading overlay -->
+        <div class="content-loading" id="contentLoading">
+          <div class="spinner"></div>
+        </div>
+
+        <!-- Dynamic content -->
+        <div id="contentArea"></div>
+
+        <!-- Toast container -->
+        <div class="toast-container" id="toastContainer"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <script type="module" src="/js/admin.dashboard.js"></script>
+</body>
+</html>
